@@ -21,7 +21,7 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
   gosu postgres /usr/lib/postgresql/$PG_VERSION/bin/initdb -D "$PGDATA" --encoding=UTF8 --locale=C
 fi
 
-gosu postgres /usr/lib/postgresql/$PG_VERSION/bin/pg_ctl start -D "$PGDATA" -l /data/pg.log -w -t 30
+gosu postgres /usr/lib/postgresql/$PG_VERSION/bin/pg_ctl start -D "$PGDATA" -l "$PGDATA/pg.log" -w -t 30
 
 # Create honcho db/user if not exists
 gosu postgres psql -c "CREATE DATABASE honcho;" 2>/dev/null || true

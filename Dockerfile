@@ -6,6 +6,7 @@ RUN apt-get update \
     curl \
     git \
     gosu \
+    tini \
     procps \
     python3 \
     build-essential \
@@ -45,4 +46,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s \
   CMD curl -f http://localhost:8080/setup/healthz || exit 1
 
 USER root
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--", "./entrypoint.sh"]

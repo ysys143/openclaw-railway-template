@@ -8,6 +8,7 @@ RUN apt-get update \
     gosu \
     tini \
     procps \
+    postgresql \
     python3 \
     build-essential \
     zip \

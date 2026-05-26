@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-chown -R openclaw:openclaw /data
-chmod 700 /data
+chown openclaw:openclaw /data
+chmod 711 /data
 
 if [ ! -d /data/.linuxbrew ]; then
   cp -a /home/linuxbrew/.linuxbrew /data/.linuxbrew

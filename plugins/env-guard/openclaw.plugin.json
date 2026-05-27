@@ -1,0 +1,13 @@
+{
+  "id": "env-guard",
+  "name": "Env Guard",
+  "description": "Protects .env files from being read by tools",
+  "activation": {
+    "onStartup": true
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

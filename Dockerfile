@@ -25,6 +25,10 @@ RUN corepack enable && pnpm install --frozen-lockfile --prod
 COPY src ./src
 COPY --chmod=755 entrypoint.sh ./entrypoint.sh
 
+# Root-owned, tamper-proof plugins baked into image (loaded via plugins.load.paths).
+# Root ownership passes OpenClaw's plugin trust check and prevents the agent (uid 1001) from modifying the guard.
+COPY plugins/env-guard /opt/openclaw-plugins/env-guard
+
 RUN useradd -m -s /bin/bash openclaw \
   && chown -R openclaw:openclaw /app \
   && mkdir -p /data && chown openclaw:openclaw /data \
